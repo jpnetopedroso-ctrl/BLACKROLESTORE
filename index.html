@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlackHole | A Singularidade da Tecnologia</title>
+    <!-- Google Fonts: Space Grotesk & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Atmosfera Espacial -->
+    <div id="galaxy-bg"></div>
+    <div class="nebula"></div>
+
+    <!-- HEADER DE ALTA PERFORMANCE -->
+    <header>
+        <div class="top-banner">
+  
+        </div>
+        <div class="container navbar">
+            <div class="logo-group" onclick="window.location.reload()">
+                <div class="bh-logo"></div>
+                <h1>BLACK<span>HOLE</span></h1>
+            </div>
+
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="O que você deseja atrair hoje?" onkeyup="liveSearch()">
+            </div>
+
+            <div class="nav-actions">
+                <div class="cart-btn" onclick="toggleCart()">
+                    <div class="cart-icon">
+                        <i class="fa-solid fa-shuttle-space"></i>
+                        <span id="cart-count">0</span>
+                    </div>
+                    <div class="cart-info">
+                        <span>Meu Carrinho</span>
+                        <strong id="cart-total-header">U$ 0,00</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MEGA BANNER PROPAGANDA (iPHONE 17) -->
+    <section class="mega-hero">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <span class="status-badge">PRÉ-VENDA EXCLUSIVA</span>
+                <h2>iPhone 17 <span class="accent">Pro Ultra</span></h2>
+                <p>A cor <strong>Titanium Solar</strong> chegou para dobrar o espaço-tempo. Câmera de 100MP e o chip Quantum A19.</p>
+                <div class="hero-cta">
+                    <a href="#loja" class="btn-stellar">ADQUIRIR NA PRÉ-VENDA</a>
+                    <div class="h-price">A partir de <strong>U$ 1.470</strong></div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <!-- Imagem do iPhone 17 Pro Laranja Conforme Solicitado -->
+                <img src="https://vancitycomputech.com/wp-content/uploads/2024/09/iphone-16-pro-max-desert-titanium.png" alt="iPhone 17 Pro Laranja" class="floating">
+            </div>
+        </div>
+    </section>
+
+    <!-- BENTO GRID (OS QUADRADOS DE PROPAGANDA) -->
+    <section class="container promo-grid">
+        <div class="bento-card large" style="background-image: linear-gradient(to bottom, transparent, #000), url('https://images.unsplash.com/photo-1663499482523-1c0c1bae4ce1?q=80&w=1200');">
+            <div class="bento-content">
+                <h3>Série iPhone 16</h3>
+                <p>O poder do Titânio em suas mãos.</p>
+                <button onclick="filterCat('IPHONE')">Explorar</button>
+            </div>
+        </div>
+        <div class="bento-card" style="background-image: linear-gradient(to bottom, transparent, #000), url('https://images.unsplash.com/photo-1546868871-70ca4844567c?q=80&w=600');">
+            <div class="bento-content">
+                <h3>Watches</h3>
+                <p>O futuro no pulso.</p>
+            </div>
+        </div>
+        <div class="bento-card" style="background-image: linear-gradient(to bottom, transparent, #000), url('https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=600');">
+            <div class="bento-content">
+                <h3>M4 MacBooks</h3>
+                <p>Velocidade extrema.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FILTROS DE CATEGORIA -->
+    <nav class="container categories-nav">
+        <button class="pill active" data-cat="TUDO" onclick="setActiveFilter(this); render('TUDO')">Tudo</button>
+        <button class="pill" data-cat="IPHONE" onclick="setActiveFilter(this); render('IPHONE')">iPhones</button>
+        <button class="pill" data-cat="WATCH" onclick="setActiveFilter(this); render('WATCH')">Watches</button>
+        <button class="pill" data-cat="APPLE" onclick="setActiveFilter(this); render('APPLE')">iPad & Mac</button>
+        <button class="pill" data-cat="XIAOMI" onclick="setActiveFilter(this); render('XIAOMI')">Xiaomi/Poco</button>
+    </nav>
+
+    <!-- VITRINE DE PRODUTOS -->
+    <main class="container section-padding" id="loja">
+        <div class="shop-header">
+            <h2>🛒 Mercadorias Disponíveis</h2>
+            <div class="sort-info">Mostrando itens em destaque</div>
+        </div>
+        
+        <div class="products-grid" id="products-grid">
+            <!-- Gerado via Script -->
+        </div>
+    </main>
+
+    <!-- CARRINHO LATERAL (DRAWER) -->
+    <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+    <aside class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h3>SUA BOLSA DE COMPRAS</h3>
+            <button class="close-btn" onclick="toggleCart()">&times;</button>
+        </div>
+        
+        <div class="cart-body" id="cart-list">
+            <!-- Itens dinâmicos -->
+        </div>
+
+        <div class="cart-footer">
+            <div class="total-row">
+                <span>Subtotal:</span>
+                <strong id="cart-total-final">U$ 0,00</strong>
+            </div>
+            <p class="tax-info">Impostos inclusos e frete calculado no checkout.</p>
+            <button class="btn-checkout" onclick="sendToWhatsApp()">
+                <i class="fab fa-whatsapp"></i> FINALIZAR NO WHATSAPP
+            </button>
+        </div>
+    </aside>
+
+    <script src="script.js"></script>
+</body>
+</html>
